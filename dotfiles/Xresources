@@ -5,7 +5,7 @@ URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
 ! Scroll back on key press
 URxvt*scrollTtyKeypress: true
 ! Font
-Rxvt*font:	xft:Droid Sans Mono:pixelsize=11:Regular
+URxvt*font:	xft:DroidSansMono\ Nerd\ Font\ Mono:size=8
 ! Remove ugly scrollbar
 URxvt.scrollBar: false
 ! Cut and paste
