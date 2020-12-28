@@ -234,9 +234,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Lock shortcut
 bindsym Mod1+l exec dm-tool lock
 
-# Startup discord
-exec --no-startup-id discord --start-minimized &
-
 # Startup steam
 exec --no-startup-id steam -silent &
 
@@ -245,5 +242,6 @@ exec --no-startup-id dunst &
 
 # Start default apps on each workspace
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox' &
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord' &
 # Go to ws 1 to start
 exec --no-startup-id i3-msg workspace $ws1 &

@@ -21,7 +21,8 @@ URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt*urlLauncher: /usr/bin/firefox
 urxvt*matcher.button: 1
 urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-! Colors from terminal.sex
+
+! Colors from terminal.sexy
 ! special
 *.foreground:   #c0a79a
 *.background:   #1c122e
