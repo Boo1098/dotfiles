@@ -52,8 +52,8 @@ module-margin-left = 1
 module-margin-right = 2
 
 ; First font is for text, second for glyphs!
-font-0 = Droid Sans Mono:pixelsize=8;0
-font-1 = DroidSansMono Nerd Font Mono:pixelsize=14;2
+font-0 = Droid Sans Mono:pixelsize=8;2
+font-1 = DroidSansMono Nerd Font Mono:pixelsize=14;4
 
 modules-left = i3
 modules-center = mpd
@@ -289,6 +289,8 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
+
+use-ui-max=false
 
 format-volume = <label-volume> <bar-volume>
 label-volume =  %percentage%%
