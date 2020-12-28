@@ -1,0 +1,57 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_vimrc:
+    src: vimrc
+    dst: ~/.vimrc
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+  f_xprofile:
+    src: xprofile
+    dst: ~/.xprofile
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_bash_profile:
+    src: bash_profile
+    dst: ~/.bash_profile
+  d_i3:
+    src: config/i3
+    dst: ~/.config/i3
+  d_dunst:
+    src: config/dunst
+    dst: ~/.config/dunst
+  d_polybar:
+    src: config/polybar
+    dst: ~/.config/polybar
+  d_neofetch:
+    src: config/neofetch
+    dst: ~/.config/neofetch
+  f_picom.conf:
+    src: config/picom.conf
+    dst: ~/.config/picom.conf
+  d_htop:
+    src: config/htop
+    dst: ~/.config/htop
+    chmod: '700'
+  f_xresources:
+    src: Xresources
+    dst: ~/.Xresources
+profiles:
+  Nova:
+    dotfiles:
+    - f_vimrc
+    - f_xinitrc
+    - f_xprofile
+    - f_bashrc
+    - f_bash_profile
+    - d_i3
+    - d_dunst
+    - d_polybar
+    - d_neofetch
+    - f_picom.conf
+    - d_htop
+    - f_xresources
