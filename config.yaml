@@ -6,9 +6,6 @@ dotfiles:
   f_vimrc:
     src: vimrc
     dst: ~/.vimrc
-  f_xinitrc:
-    src: xinitrc
-    dst: ~/.xinitrc
   f_xprofile:
     src: xprofile
     dst: ~/.xprofile
@@ -44,7 +41,6 @@ profiles:
   Nova:
     dotfiles:
     - f_vimrc
-    - f_xinitrc
     - f_xprofile
     - f_bashrc
     - f_bash_profile
