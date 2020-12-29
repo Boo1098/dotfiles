@@ -228,6 +228,9 @@ bindsym --release Print exec "scrot '/home/froppy/Photos/Screenshots/%F_%T.png' 
 # Launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 
+# Launch Unclutter
+exec_always --no-startup-id unclutter &
+
 # Lock shortcut
 bindsym Mod1+l exec dm-tool lock
 
