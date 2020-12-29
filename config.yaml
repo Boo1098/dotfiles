@@ -37,6 +37,9 @@ dotfiles:
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
+  f_rc:
+    src: config/cmus/rc
+    dst: ~/.config/cmus/rc
 profiles:
   Nova:
     dotfiles:
@@ -51,3 +54,4 @@ profiles:
     - f_picom.conf
     - d_htop
     - f_xresources
+    - f_rc
