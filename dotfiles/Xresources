@@ -10,14 +10,14 @@ URxvt*font:	xft:DroidSansMono\ Nerd\ Font\ Mono:size=8
 URxvt.scrollBar: false
 ! Cut and paste
 URxvt.clipboard.autocopy: true
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.Mod4-c: perl:clipboard:copy
+URxvt.keysym.Mod4-v: perl:clipboard:paste
 ! Links
 URxvt.url-select.launcher: firefox
 URxvt.url-select.underline: true
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.Mod4-u: perl:url-select:select_next
+URxvt.keysym.Mod4-Escape: perl:keyboard-select:activate
+URxvt.keysym.Mod4-s: perl:keyboard-select:search
 URxvt*urlLauncher: /usr/bin/firefox
 urxvt*matcher.button: 1
 urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
