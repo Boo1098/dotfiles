@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -221,6 +221,19 @@ border_radius 3
 # Transparency
 exec --no-startup-id "picom --config $HOME/.config/picom.conf -b &" 
 
+# Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Multi monitor commands
+bindsym $mod+p move workspace to output right
+
+# Show the sup-mail scratchpad window, if any.
+#bindsym Mod4+s [title="^Sup ::"] scratchpad show
+
 # Screenshots
 bindsym --release Ctrl+Print exec "scrot -s '/home/froppy/Photos/Screenshots/%F_%T_.png' -e 'xclip -selection clipboard -t image/png -i $f'"
 bindsym --release Print exec "scrot '/home/froppy/Photos/Screenshots/%F_%T.png' -e 'xclip -selection clipboard -t image/png -i $f'"
@@ -232,7 +245,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 exec_always --no-startup-id unclutter &
 
 # Lock shortcut
-bindsym Mod1+l exec dm-tool lock
+bindsym Mod4+l exec dm-tool lock
 
 # Startup notification daemon
 exec --no-startup-id dunst &
@@ -243,6 +256,7 @@ exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
 assign [class="discord"] $ws3
 exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf &' &
 assign [class="Steam"] $ws4
+exec --no-startup-id i3-msg move workspave $ws2 to output DVI-D-0 &
 # Go to ws 1 to start
 exec --no-startup-id i3-msg workspace $ws1 &
 
