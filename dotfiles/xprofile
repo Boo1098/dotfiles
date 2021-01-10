@@ -22,6 +22,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 xrandr --output HDMI-0 --left-of DVI-D-0
+xrandr --output HDMI-0 --primary
 feh --bg-scale ~/Photos/Backgrounds/nebula.jpg
 numlockx &
 exec i3
