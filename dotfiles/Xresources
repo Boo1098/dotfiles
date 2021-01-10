@@ -6,6 +6,7 @@ URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
 URxvt*scrollTtyKeypress: true
 ! Font
 URxvt*font:	xft:DroidSansMono\ Nerd\ Font\ Mono:size=8
+	xft:Sazanami Mincho:size=8
 ! Remove ugly scrollbar
 URxvt.scrollBar: false
 ! Cut and paste
@@ -29,7 +30,7 @@ urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 *.cursorColor:  #c0a79a
 
 ! black
-*.color0:       #33303b
+*.color0:       #1c122e
 *.color8:       #4f4b58
 
 ! red
