@@ -1,0 +1,69 @@
+
+/* to hide the native tabs */
+#TabsToolbar {
+    visibility: collapse;
+}
+
+/* to hide the sidebar header */
+#sidebar-header {
+    visibility: collapse;
+}
+
+/* Transparency */
+html, html > *, html > * > *, .browser-toolbar  {
+  border: none !important;
+  -moz-appearance: none !important;
+  box-shadow: none !important;
+  background: transparent!important;
+}
+
+.titlebar-color, .browser-toolbar, findbar {
+  background: rgba(49, 54, 59, 0.5)!important;  
+}
+
+:root {
+  --sidebar-hover-width: 100px;
+  --sidebar-visible-width: 400px;
+  --sidebar-dif: 300px;
+}
+
+/* Sidebar TST */
+#sidebar-box {
+  position: relative !important;
+  overflow-x: hidden !important;
+  /*margin-right: calc(var(--sidebar-dif) * -1) !important;*/
+  left: var(--sidebar-hover-width) !important;
+  min-width: var(--sidebar-hover-width) !important;
+  max-width: var(--sidebar-hover-width) !important;
+  border-right: 1px solid var(--sidebar-border-color);
+  z-index: 1;
+  transition: all 0.2s;
+  opacity:.75 !important;
+}
+
+#sidebar-box:hover {
+  margin-right: calc(var(--sidebar-dif) * -1) !important;
+  left: var(--sidebar-visible-width) !important;
+  min-width: var(--sidebar-visible-width) !important;
+  max-width: var(--sidebar-visible-width) !important;
+  opacity:.9 !important;
+}
+
+
+#sidebar {
+  opacity: 1 !important;
+}
+
+#sidebar-box:hover #sidebar {
+  opacity: 1 !important;
+}
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+  display: none !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+  display: none;
+}

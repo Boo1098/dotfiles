@@ -40,6 +40,9 @@ dotfiles:
   f_rc:
     src: config/cmus/rc
     dst: ~/.config/cmus/rc
+  d_chrome:
+    src: mozilla/firefox/isxof19t.default-release/chrome
+    dst: ~/.mozilla/firefox/isxof19t.default-release/chrome
 profiles:
   Nova:
     dotfiles:
@@ -55,3 +58,4 @@ profiles:
     - d_htop
     - f_xresources
     - f_rc
+    - d_chrome
