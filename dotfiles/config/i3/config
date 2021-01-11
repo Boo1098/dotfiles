@@ -256,6 +256,7 @@ bindsym Mod4+l exec dm-tool lock
 exec --no-startup-id dunst &
 
 # Start default apps on each workspace
+exec --no-startup-id nextcloud &
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox &' &
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
 assign [class="discord"] $ws3
