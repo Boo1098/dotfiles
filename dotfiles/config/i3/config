@@ -46,7 +46,7 @@ bindsym XF86AudioPrev exec playerctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal &
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal &
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -208,7 +208,9 @@ client.background       #FFFFFF
 #  status_command i3status
 #}
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nf '#BBBBBB' -nb '#222222' -sb '#8933BE' -sf '#EEEEEE' -fn 'monospace-10' -p 'dmenu >' -i"
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nf '#BBBBBB' -nb '#222222' -sb '#8933BE' -sf '#EEEEEE' -fn 'monospace-10' -p 'dmenu >' -i"
+# Using rofi instead
+bindsym $mod+d exec --no-startup-id $HOME/.config/rofi/launchers/colorful/launcher.sh &
 
 # Remove window titles
 for_window [class=".*"] border pixel 0
@@ -221,7 +223,7 @@ smart_borders no_gaps
 gaps inner 20
 
 # Rounded Corners
-border_radius 3
+border_radius 5
 
 # Transparency
 exec --no-startup-id "picom --config $HOME/.config/picom.conf -b &" 
