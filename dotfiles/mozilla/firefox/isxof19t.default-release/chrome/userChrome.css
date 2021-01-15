@@ -23,8 +23,8 @@ html, html > *, html > * > *, .browser-toolbar  {
 
 :root {
   --sidebar-hover-width: 100px;
-  --sidebar-visible-width: 400px;
-  --sidebar-dif: 300px;
+  --sidebar-visible-width: 300px;
+  --sidebar-dif: 200px;
 }
 
 /* Sidebar TST */
@@ -37,7 +37,7 @@ html, html > *, html > * > *, .browser-toolbar  {
   max-width: var(--sidebar-hover-width) !important;
   border-right: 1px solid var(--sidebar-border-color);
   z-index: 1;
-  transition: all 0.2s;
+  /*transition: all 0.2s;*/
   opacity:.75 !important;
 }
 
