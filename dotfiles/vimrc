@@ -1,21 +1,169 @@
-syntax on
+" Froppy
+" Colors {{{
+
+" Set colorscheme
+colorscheme badwolf
+
+" badwolf config
+let g:badwolf_tabline = 3 " Make tab line much lighter than the backgroud
+
+" process syntax
+syntax enable
+
+" }}}
+" Spaces & Tabs {{{
+
+" Tab setup
+set tabstop=4		" number of spaces to tab
+set softtabstop=4	" number of spaces inside tab
+set expandtab		" add spaces when pressing tab
+
+" }}}
+" UI Config {{{
+
+" Enable line numbers
 set number
 
-noremap ; l
-noremap l k
-noremap k j
-noremap j h
+" Show last command in bottom right
+set showcmd
 
+" Show cursur under line
+set cursorline
+
+" Load filetype-specific indent files
+" Note: can load files from ~/.vim/indent/type.vim
+filetype indent on
+
+" Show visual autocomplete in vim
+set wildmenu
+
+" Only redraw when necessary. Increases performance
+set lazyredraw
+
+" Show matching braces
+set showmatch
+
+" }}}
+" Searching {{{
+
+" Search as you type
+set incsearch
+
+" Highlight all matches when searching
+set hlsearch
+
+" }}}
+" Folding {{{
+
+" Enable folding
+set foldenable
+
+" Sets folding to be on indents
+set foldmethod=indent
+
+" Ensure all folds are open on load
+set foldlevelstart=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" }}}
+" Movement {{{
+
+" Make movements through wrapped lines work
+nnoremap j gj
+nnoremap k gk
+
+"split navigations
+map <Esc>[; <C-Semicolon>
+map! <Esc>[; <C-Semicolon>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" }}}
+" Vim default features enable {{{
+
+" Enable utf-8
+set encoding=utf-8
+
+" Enable syntax highlighting
+syntax on
+
+" Set smart case sensitivity
+set ignorecase 
+
+" Word wrap only on spaces
+set linebreak
+
+" }}}
+" Keymaps {{{
+
+" Move movement keys over by one
+"noremap ; l
+"noremap l k
+"noremap k j
+"noremap j h
+"I'm so fucking sorry
+
+" Allow jj to leave modes
 imap jj <Esc>
 
-set nocompatible
-filetype off
+" }}}
+" Vundle {{{
 
+set nocompatible	" Required by Vundle
+filetype off		" Required by Vundle
+
+let g:python3_host_prog='/usr/bin/python3'
+let g:formatter_yapf_style = 'pep8'
+
+" Include Vundle in path and start it
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" Vundle must manage Vundle
 Plugin 'VundleVim/Vundle.vim'
+
 " Plugins in here
 
-" Used for markdown stuff
+" SimpylFold ensures that folds follow code rather than indents
+Plugin 'tmhedberg/SimpylFold'
+let g:SimpylFold_docstring_preview=1 " Show docs when folded
+
+" Autoformat python
+Plugin 'Chiel92/vim-autoformat'
+
+" Autocomplete 
+Bundle 'Valloric/YouCompleteMe'
+
 call vundle#end()
+
 filetype plugin indent on
+
+" }}}
+" Indentation Styles {{{
+
+" Python PEP 8
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+"    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+" Flag unecessary whitespace
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" vim:foldmethod=marker:foldlevel=0
+" }}}
