@@ -49,6 +49,9 @@ dotfiles:
   d_after:
     src: vim/after
     dst: ~/.vim/after
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
 profiles:
   Nova:
     dotfiles:
@@ -67,3 +70,4 @@ profiles:
     - d_chrome
     - d_ftplugin
     - d_after
+    - f_zshrc
