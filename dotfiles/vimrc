@@ -14,9 +14,9 @@ syntax enable
 " Spaces & Tabs {{{
 
 " Tab setup
-set tabstop=4		" number of spaces to tab
-set softtabstop=4	" number of spaces inside tab
-set expandtab		" add spaces when pressing tab
+set tabstop=4       " number of spaces to tab
+set softtabstop=4   " number of spaces inside tab
+set expandtab       " add spaces when pressing tab
 
 " }}}
 " UI Config {{{
@@ -42,6 +42,15 @@ set lazyredraw
 
 " Show matching braces
 set showmatch
+
+" Word wrap only on spaces
+set linebreak
+
+" Set smart case sensitivity
+set ignorecase
+
+" enable utf-8
+set encoding=utf-8
 
 " }}}
 " Searching {{{
@@ -75,12 +84,22 @@ nnoremap j gj
 nnoremap k gk
 
 "split navigations
-map <Esc>[; <C-Semicolon>
-map! <Esc>[; <C-Semicolon>
+"map <Esc>[; <C-Semicolon>
+"map! <Esc>[; <C-Semicolon>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Add split navigation for terminals too!
+tnoremap <C-J> <C-W><C-J>
+tnoremap <C-K> <C-W><C-K>
+tnoremap <C-L> <C-W><C-L>
+tnoremap <C-H> <C-W><C-H>
+
+" Vimwiki move columns
+nnoremap <leader>h :VimwikiTableMoveColumnLeft<CR>
+nnoremap <leader>l :VimwikiTableMoveColumnRight<CR>
 
 " move to beginning/end of line
 nnoremap B ^
@@ -90,80 +109,88 @@ nnoremap E $
 nnoremap gV `[v`]
 
 " }}}
-" Vim default features enable {{{
+" Leader Shortcuts {{{
 
-" Enable utf-8
-set encoding=utf-8
+" Use , as leader key
+let mapleader=","
 
-" Enable syntax highlighting
-syntax on
+" allow jj to leave modes
+imap jj <esc>
 
-" Set smart case sensitivity
-set ignorecase 
+" Show super undo menu
+nnoremap <leader>u :GundoToggle<CR>
 
-" Word wrap only on spaces
-set linebreak
+" Save current session, reopen with vim -S
+nnoremap <leader>s :mksession!<CR>
 
-" }}}
-" Keymaps {{{
+" Git shortcuts
+nnoremap <leader>c :!git commit -a<CR>
 
-" Move movement keys over by one
-"noremap ; l
-"noremap l k
-"noremap k j
-"noremap j h
-"I'm so fucking sorry
-
-" Allow jj to leave modes
-imap jj <Esc>
+" Add pydocstring shortcut
+nnoremap <leader>d :Pydocstring<CR>
 
 " }}}
 " Vundle {{{
 
-set nocompatible	" Required by Vundle
-filetype off		" Required by Vundle
+set nocompatible    " required by vundle
+filetype off        " required by vundle
 
 let g:python3_host_prog='/usr/bin/python3'
 let g:formatter_yapf_style = 'pep8'
 
-" Include Vundle in path and start it
+" include vundle in path and start it
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Vundle must manage Vundle
+" vundle must manage vundle
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugins in here
+" Plugins {{{
 
-" SimpylFold ensures that folds follow code rather than indents
-Plugin 'tmhedberg/SimpylFold'
-let g:SimpylFold_docstring_preview=1 " Show docs when folded
+" simpylfold ensures that folds follow code rather than indents
+Plugin 'tmhedberg/simpylfold'
+let g:SimpylFold_docstring_preview = 0  " show docs when folded
+let g:SimpylFold_fold_docstring = 1     " allow docstrings to fold
 
-" Autoformat python
-Plugin 'Chiel92/vim-autoformat'
+" autoformat python
+Plugin 'chiel92/vim-autoformat'
 
-" Autocomplete 
-Bundle 'Valloric/YouCompleteMe'
+" autocomplete
+Bundle 'valloric/youcompleteme'
+
+" wiki in vim!
+Plugin 'vimwiki/vimwiki'
+let g:vimwiki_list = [{   'path':   '~/vimwiki/',
+                        \ 'syntax': 'markdown', 
+                        \ 'ext':    '.md',     
+                        \ 'auto_diary_index': 1,
+                        \ 'auto_generate_links': 1,
+                        \ 'auto_toc': 1}]       " Automatically update toc on save
+let g:vimwiki_folding = 'expr' " Enable folding for markdown headers
+
+" Allows super undo menu
+"Plugin 'sjl/gundo.vim'
+"let g:gundo_prefer_python3 = 1 " Use python3
+
+" Allow fuzzy search of files
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_match_window = 'bottom,order:ttb'                   " Order results from top to bottom
+let g:ctrlp_switch_buffer = 0                                   " Always open in new buffer
+let g:ctrlp_working_path_mode = 0                               " Update path with vim
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'  " Use ag instead of standard search
+
+" Create docstrings with :Pydocstring
+Plugin 'heavenshell/vim-pydocstring'
+let g:pydocstring_formatter = 'google'  " Use google format
+let g:pydocstring_enable_mapping = 0    " Ensure no keymappings (it overrdies <C-l> for some reason
+
+" }}}
 
 call vundle#end()
 
 filetype plugin indent on
 
 " }}}
-" Indentation Styles {{{
-
-" Python PEP 8
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-"    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-" Flag unecessary whitespace
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
+" Autorun for this file {{{
 " vim:foldmethod=marker:foldlevel=0
 " }}}
