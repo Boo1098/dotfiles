@@ -67,10 +67,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -226,7 +226,7 @@ gaps inner 20
 border_radius 5
 
 # Transparency
-exec --no-startup-id "picom --config=$HOME/.config/picom.conf &" 
+exec_always --no-startup-id "picom --config=$HOME/.config/picom.conf &" 
 
 # Scratchpad
 # Make the currently focused window a scratchpad
