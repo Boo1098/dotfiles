@@ -1,17 +1,22 @@
 ! Note: to reload you must do
 ! xrdb ~/.Xresources
+
 ! Extentions
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
 ! Scroll back on key press
 URxvt*scrollTtyKeypress: true
+
 ! Font
 URxvt*font:	xft:MesloLGS NF:size=8
+
 ! Remove ugly scrollbar
 URxvt.scrollBar: false
+
 ! Cut and paste
 URxvt.clipboard.autocopy: true
 URxvt.keysym.Mod4-c: perl:clipboard:copy
 URxvt.keysym.Mod4-v: perl:clipboard:paste
+
 ! Links
 URxvt.url-select.launcher: firefox
 URxvt.url-select.underline: true
@@ -22,41 +27,46 @@ URxvt*urlLauncher: /usr/bin/firefox
 urxvt*matcher.button: 1
 urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 
-! Colors from terminal.sexy
+! Colorscheme {{{
+! Use terminal.sexy to preview
+! Boo1098/spacecamp
 ! special
-*.foreground:   #c0a79a
-*.background:   #1c122e
-*.cursorColor:  #c0a79a
+*.foreground:   #d0d0d0
+*.background:   #0a0015
+*.cursorColor:  #d0d0d0
 
 ! black
-*.color0:       #1c122e
-*.color8:       #4f4b58
+*.color0:       #0a0015
+*.color8:       #666666
 
 ! red
-*.color1:       #87404f
-*.color9:       #87404f
+*.color1:       #d71a1a
+*.color9:       #ff0000
 
 ! green
-*.color2:       #4c9882
-*.color10:      #4c9882
+*.color2:       #57ba37
+*.color10:      #d8fa3b
 
 ! yellow
-*.color3:       #71949a
-*.color11:      #71949a
+*.color3:       #f0d50c
+*.color11:      #e7c547
 
 ! blue
-*.color4:       #615772
-*.color12:      #615772
+*.color4:       #91aadf
+*.color12:      #b7cbf4
 
 ! magenta
-*.color5:       #783e57
-*.color13:      #783e57
+*.color5:       #cf73e6
+*.color13:      #b77ee0
 
 ! cyan
-*.color6:       #554757
-*.color14:      #554757
+*.color6:       #b7cbf4
+*.color14:      #a9c1de
 
 ! white
-*.color7:       #c0a79a
-*.color15:      #c0a79a
+*.color7:       #dedede
+*.color15:      #eeeeee
 
+! }}}
+
+! vim:foldmethod=marker:foldlevel=0

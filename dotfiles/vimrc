@@ -1,16 +1,4 @@
 " Froppy
-" Colors {{{
-
-" Set colorscheme
-colorscheme badwolf
-
-" badwolf config
-let g:badwolf_tabline = 3 " Make tab line much lighter than the backgroud
-
-" process syntax
-syntax enable
-
-" }}}
 " Spaces & Tabs {{{
 
 " Tab setup
@@ -51,6 +39,9 @@ set ignorecase
 
 " enable utf-8
 set encoding=utf-8
+
+" Enable use of mouse
+set mouse=a
 
 " }}}
 " Searching {{{
@@ -184,11 +175,29 @@ Plugin 'heavenshell/vim-pydocstring'
 let g:pydocstring_formatter = 'google'  " Use google format
 let g:pydocstring_enable_mapping = 0    " Ensure no keymappings (it overrdies <C-l> for some reason
 
+" Colorscheme
+Plugin 'jaredgorski/spacecamp'
+
 " }}}
 
 call vundle#end()
 
 filetype plugin indent on
+
+" }}}
+" Colors {{{
+
+" process syntax
+syntax on
+
+" Set colorscheme
+"colorscheme dogrun
+"colorscheme badwolf
+"colorscheme synthwave84
+colorscheme spacecamp
+
+" badwolf config
+let g:badwolf_tabline = 3 " Make tab line much lighter than the backgroud
 
 " }}}
 " Autorun for this file {{{
