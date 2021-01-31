@@ -126,9 +126,6 @@ nnoremap <leader>d :Pydocstring<CR>
 set nocompatible    " required by vundle
 filetype off        " required by vundle
 
-let g:python3_host_prog='/usr/bin/python3'
-let g:formatter_yapf_style = 'pep8'
-
 " include vundle in path and start it
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -145,6 +142,8 @@ let g:SimpylFold_fold_docstring = 1     " allow docstrings to fold
 
 " autoformat python
 Plugin 'chiel92/vim-autoformat'
+let g:python3_host_prog='/usr/bin/python3'
+let g:formatter_yapf_style = 'pep8'
 
 " autocomplete
 Bundle 'valloric/youcompleteme'
@@ -177,6 +176,22 @@ let g:pydocstring_enable_mapping = 0    " Ensure no keymappings (it overrdies <C
 
 " Colorscheme
 Plugin 'jaredgorski/spacecamp'
+
+" Vimtex, latex in vim
+Plugin 'lervag/vimtex'
+let g:vimtex_fold_enabled = 1
+"let g:vimtex_fold_manual = 1
+let g:vimtex_view_general_viewer = 'qpdfview'
+let g:vimtex_view_general_options
+    \ = '--unique @pdf\#src:@tex:@line:@col'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
+" Arduino Commands
+Plugin 'stevearc/vim-arduino'
+let g:arduino_dir='/usr/share/arduino'
+let g:arduino_cmd='/usr/share/arduino/arduino'
+let g:arduino_home_dir=$HOME . ".arduino15"
+
 
 " }}}
 
