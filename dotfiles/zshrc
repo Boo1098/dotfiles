@@ -113,6 +113,10 @@ alias ls='ls --color=auto -F'
 alias dotdrop='~/dotfiles/dotdrop.sh --cfg=~/dotfiles/config.yaml'
 export EDITOR="vim"
 export TERMINAL="urxvt"
+export PATH="/usr/local/MATLAB/R2020b/bin:$HOME/bin:$PATH"
+
+# go home
+cd
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
