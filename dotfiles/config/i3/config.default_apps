@@ -1,0 +1,22 @@
+# Startup notification daemon
+exec_always --no-startup-id dunst &
+
+# Start default apps on each workspace
+exec --no-startup-id nextcloud &
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox &' &
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
+assign [class="discord"] $ws3
+exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf &' &
+assign [class="Steam"] $ws4
+exec --no-startup-id urxvt -name cmus -e cmus &
+for_window [instance="cmus"] floating enable
+for_window [instance="cmus"] move scratchpad
+exec --no-startup-id i3-msg move workspave $ws2 to output DVI-D-0 &
+# Go to ws 1 to start
+exec --no-startup-id i3-msg workspace $ws1 &
+
+# Setup timeouts
+exec --no-startup-id xset dpms 0 0 300 &
+
+# Remove attentions
+exec --no-startup-id sh -c 'sleep 7 && wmctrl -l | cut -d " " -f 1 | xargs -I{} wmctrl -i -r "{}" -b remove,demands_attention' &

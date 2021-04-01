@@ -55,6 +55,9 @@ dotfiles:
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
+  f_config:
+    src: vnc/config
+    dst: ~/.vnc/config
 profiles:
   Nova:
     dotfiles:
@@ -75,3 +78,4 @@ profiles:
     - d_after
     - f_zshrc
     - f_p10k.zsh
+    - f_config

@@ -23,7 +23,24 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 xrandr --output HDMI-0 --left-of DVI-D-0
 xrandr --output HDMI-0 --primary
-#feh --bg-scale ~/Photos/Backgrounds/buran-purple.jpg
+
 /home/froppy/src/nasa-image-scraper/random_bg.sh
 numlockx &
+
+# Based on current display, load different i3 config
+# VNC display home
+/home/froppy/.config/i3/genconfig-local.sh
+if [ "$DISPLAY" = ":2" ]; then
+    /home/froppy/.config/i3/genconfig-vnc2.sh
+fi
+
+# VNC display windows
+if [ "$DISPLAY" = ":1" ]; then
+    /home/froppy/.config/i3/genconfig-vnc1.sh
+fi
+
+# Local Display
+if [ "$DISPLAY" = ":0"]; then
+    /home/froppy/.config/i3/genconfig-local.sh
+fi
 exec i3

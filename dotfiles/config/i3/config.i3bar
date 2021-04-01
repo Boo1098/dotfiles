@@ -1,0 +1,15 @@
+bar {
+  position top
+  colors {
+    background #2F1B49
+    statusline #FFFFFF
+    separator  #483066
+
+    focused_workspace  #723699 #502977 #FFFFFF
+    active_workspace   #333333 #222222 #FFFFFF
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #2F343A #900000 #FFFFFF
+    binding_mode       #2F343A #900000 #FFFFFF
+  }
+  status_command i3status
+}
