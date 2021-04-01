@@ -116,7 +116,7 @@ export TERMINAL="urxvt"
 export PATH="/usr/local/MATLAB/R2020b/bin:$HOME/bin:$PATH"
 
 # go home
-cd
+#cd
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -125,3 +125,10 @@ cd
 bindkey -v
 #export KEYTIMEOUT=1
 bindkey -M viins 'jj' vi-cmd-mode
+
+# Perl paths
+PATH="/home/froppy/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/froppy/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/froppy/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/froppy/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/froppy/perl5"; export PERL_MM_OPT;
