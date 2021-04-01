@@ -8,9 +8,9 @@ exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
 assign [class="discord"] $ws3
 exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf &' &
 assign [class="Steam"] $ws4
-exec --no-startup-id urxvt -name cmus -e cmus &
-for_window [instance="cmus"] floating enable
-for_window [instance="cmus"] move scratchpad
+exec --no-startup-id urxvt -name ncmpcpp -e ncmpcpp &
+for_window [instance="ncmpcpp"] floating enable
+for_window [instance="ncmpcpp"] move scratchpad
 exec --no-startup-id i3-msg move workspave $ws2 to output DVI-D-0 &
 # Go to ws 1 to start
 exec --no-startup-id i3-msg workspace $ws1 &

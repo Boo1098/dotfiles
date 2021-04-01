@@ -18,7 +18,8 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #9918002e
+;background = #9918002e
+background = #18002e
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #ffffff
@@ -27,13 +28,13 @@ primary = #dddddd
 secondary = #c99000
 alert = #bd2c40
 
-[bar/top]
+[bar/topnotray]
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 10.0
+radius = 0
 fixed-center = true
 
 background = ${colors.background}
@@ -42,10 +43,10 @@ foreground = ${colors.foreground}
 line-size = 1
 line-color = #fff
 
-border-size = 4
+;border-size = 4
 border-color = #00000000
 
-padding-left = 2
+;padding-left = 2
 padding-right = 2
 
 module-margin-left = 1
@@ -59,9 +60,9 @@ modules-left = i3
 modules-center = mpd
 modules-right = pulseaudio memory cpu wlan eth temperature date powermenu
 
-tray-position = center
 tray-padding = 5
-;tray-background = #0063ff
+tray-background = ${colors.background}
+tray-transparent = false
 
 ;wm-restack = bspwm
 wm-restack = i3
@@ -76,6 +77,13 @@ wm-restack = i3
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+# Create child bar with tray
+[bar/toptray]
+inherit = bar/topnotray
+tray-position = center
+modules-center = 
+
 
 [module/xwindow]
 type = internal/xwindow
@@ -184,16 +192,29 @@ label-urgent-padding = 1
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+#format-online = <label-song> <bar-progress> <label-time>  <icon-prev> <toggle> <icon-next>
+format-online = <label-song> <label-time> <icon-stop>
+format-playing = <label-song> <label-time> <icon-stop>
+format-paused = <label-song>
+format-stopped = <toggle>
+host = 127.0.0.1
+port = 6600
+interval = 2
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-prev = ﭢ 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = ﭠ
 
-label-song-maxlen = 25
+label-song = %artist% - %title%
+label-song-maxlen = 75
 label-song-ellipsis = true
+
+bar-progress-width = 20
+bar-progress-indicator = >
+bar-progress-fill = ﱢ
+bar-progress-empty = ﱢ
 
 [module/xbacklight]
 type = internal/xbacklight
