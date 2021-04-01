@@ -438,8 +438,15 @@ menu-0-0-exec = reboot
 menu-0-1 = power off
 menu-0-1-exec = poweroff
 menu-0-2 = windows
+menu-0-2-exec = menu-open-1
+;menu-0-2-exec = sudo /usr/bin/efibootmgr -n 0 && reboot
+;
+menu-1-0 = reboot
 ; Note: you must set "user ALL=NOPASSWD: /usr/bin/efibootmgr" in visudo
-menu-0-2-exec = sudo /usr/bin/efibootmgr -n 0 && reboot
+menu-1-0-exec = sudo /usr/bin/efibootmgr -n 0 && reboot
+menu-1-1 = vm
+; Note: you must set "user ALL=NOPASSWD: /usr/bin/virsh" in visudo
+menu-1-1-exec = sudo virsh start win10
 
 ;menu-0-0 = reboot
 ;menu-0-0-exec = menu-open-1
