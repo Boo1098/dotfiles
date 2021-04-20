@@ -30,10 +30,6 @@ dotfiles:
   f_picom.conf:
     src: config/picom.conf
     dst: ~/.config/picom.conf
-  d_htop:
-    src: config/htop
-    dst: ~/.config/htop
-    chmod: '700'
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
@@ -70,7 +66,6 @@ profiles:
     - d_polybar
     - d_neofetch
     - f_picom.conf
-    - d_htop
     - f_xresources
     - f_rc
     - d_chrome
