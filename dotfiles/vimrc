@@ -150,7 +150,8 @@ let g:autoformat_remove_trailing_spaces = 0
 let g:formatterpath = ['$HOME/src/latexindent.pl']
 
 " autocomplete
-"Bundle 'valloric/youcompleteme'
+Bundle 'valloric/youcompleteme'
+let g:ycm_filetype_whitelist = {'python': 1, 'sh': 1, 'ino': 1}
 
 " wiki in vim!
 Plugin 'vimwiki/vimwiki'
