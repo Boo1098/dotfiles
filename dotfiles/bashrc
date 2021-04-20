@@ -9,7 +9,8 @@
 alias ls='ls --color=auto -F'
 alias dotdrop='~/dotfiles/dotdrop.sh --cfg=~/dotfiles/config.yaml'
 alias vim='vim --servername VIM'
-alias cp='cp --preserve=timestamps' # keep the fucking modified times right :(
+alias cp='cp -i --preserve=timestamps' # keep the fucking modified times right :(
+alias mv='mv -i' #stop overwrites
 
 # ------- Generated using ezprompt.net --------
 # get current branch in git repo
