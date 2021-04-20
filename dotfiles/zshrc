@@ -126,6 +126,8 @@ bindkey -v
 #export KEYTIMEOUT=1
 bindkey -M viins 'jj' vi-cmd-mode
 
+# python paths
+PATH="/home/froppy/.local/bin:$PATH"
 # Perl paths
 PATH="/home/froppy/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/froppy/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
