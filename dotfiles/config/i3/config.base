@@ -202,6 +202,3 @@ bindsym --release Print exec "scrot '/home/froppy/Photos/Screenshots/%F_%T.png' 
 
 # Launch Unclutter
 exec_always --no-startup-id unclutter &
-
-# Lock shortcut
-bindsym Mod4+l exec dm-tool lock

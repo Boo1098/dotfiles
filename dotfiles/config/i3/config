@@ -1,3 +1,4 @@
+set $mod Mod1
 # Contains all shared shortcuts and theming
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -202,32 +203,42 @@ bindsym --release Print exec "scrot '/home/froppy/Photos/Screenshots/%F_%T.png' 
 
 # Launch Unclutter
 exec_always --no-startup-id unclutter &
-
 # Lock shortcut
 bindsym Mod4+l exec dm-tool lock
+
+# Launch polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 # Startup notification daemon
 exec_always --no-startup-id dunst &
 
 # Start default apps on each workspace
+# Wait until mpd has started to update playlist and setup beets
+exec --no-startup-id zsh -c "until [ -f ~/.mpd/pid ]; do; sleep 1; done; mpc clear && mpc load all && mpc shuffle " &
+exec_always --no-startup-id [ ! -s ~/.mpd/pid ] && zsh -c "until [ -f ~/.mpd/pid ]; do; sleep 1; done; beet mpdstats" &
+## Music player daemon
+exec_always --no-startup-id [ ! -s ~/.mpd/pid ] && mpd --no-daemon &
+## Nextcloud Client
 exec --no-startup-id nextcloud &
+## Firefox
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox &' &
+## Discord
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
 assign [class="discord"] $ws3
+## Steam
 exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf &' &
 assign [class="Steam"] $ws4
+## Ncmpcpp Music player
 exec --no-startup-id urxvt -name ncmpcpp -e ncmpcpp &
 for_window [instance="ncmpcpp"] floating enable
 for_window [instance="ncmpcpp"] move scratchpad
+## Move workspaces
 exec --no-startup-id i3-msg move workspave $ws2 to output DVI-D-0 &
-# Go to ws 1 to start
+## Go to ws 1 to start
 exec --no-startup-id i3-msg workspace $ws1 &
 
-# Setup timeouts
+## Setup timeouts
 exec --no-startup-id xset dpms 0 0 300 &
 
-# Remove attentions
+## Remove attentions
 exec --no-startup-id sh -c 'sleep 7 && wmctrl -l | cut -d " " -f 1 | xargs -I{} wmctrl -i -r "{}" -b remove,demands_attention' &
-# Launch polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-set $mod Mod1
 bindsym $mod+Shift+r exec /home/froppy/.config/i3/genconfig-local.sh && i3-msg restart
