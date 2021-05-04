@@ -108,6 +108,9 @@ let mapleader=","
 " allow jj to leave modes
 imap jj <esc>
 
+" Use system clipboard
+set clipboard=unnamedplus
+
 " Show super undo menu
 nnoremap <leader>u :GundoToggle<CR>
 
