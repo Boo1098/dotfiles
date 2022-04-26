@@ -1,6 +1,8 @@
 ! Note: to reload you must do
 ! xrdb ~/.Xresources
 
+Xft.dpi: 108
+
 ! Extentions
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
 ! Scroll back on key press
@@ -12,12 +14,13 @@ URxvt*font:	xft:MesloLGS NF:size=8
 ! Remove ugly scrollbar
 URxvt.scrollBar: false
 
-! Cut and paste
+! Cut and paste {{{
 URxvt.clipboard.autocopy: true
 URxvt.keysym.Mod4-c: perl:clipboard:copy
 URxvt.keysym.Mod4-v: perl:clipboard:paste
+! }}}
 
-! Links
+! Links {{{
 URxvt.url-select.launcher: firefox
 URxvt.url-select.underline: true
 URxvt.keysym.Mod4-u: perl:url-select:select_next
@@ -26,6 +29,7 @@ URxvt.keysym.Mod4-s: perl:keyboard-select:search
 URxvt*urlLauncher: /usr/bin/firefox
 urxvt*matcher.button: 1
 urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+! }}}
 
 ! Colorscheme {{{
 ! Use terminal.sexy to preview

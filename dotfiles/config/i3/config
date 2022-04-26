@@ -1,4 +1,3 @@
-set $mod Mod1
 # Contains all shared shortcuts and theming
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -15,13 +14,6 @@ font pango:Droid Sans Mono 8
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool lock &
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec_always --no-startup-id nm-applet &
-
-# Bluetooth manager
-exec_always --no-startup-id blueman-applet &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -173,13 +165,13 @@ for_window [class=".*"] border pixel 1
 #new_window 1pixel
 
 # Gaps
-#smart_borders on
+smart_borders on
 #smart_borders no_gaps
 #smart_gaps on
 #gaps inner 20
 
 # Rounded Corners
-#border_radius 5
+#border_radius 15
 
 # Transparency
 #exec_always --no-startup-id "picom --config=$HOME/.config/picom.conf &" 
@@ -193,6 +185,11 @@ bindsym $mod+minus scratchpad show
 
 # Multi monitor commands
 bindsym $mod+p move workspace to output right
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+l move workspace to output right
+
 
 # Show the sup-mail scratchpad window, if any.
 #bindsym Mod4+s [title="^Sup ::"] scratchpad show
@@ -203,42 +200,20 @@ bindsym --release Print exec "scrot '/home/froppy/Photos/Screenshots/%F_%T.png' 
 
 # Launch Unclutter
 exec_always --no-startup-id unclutter &
-# Lock shortcut
-bindsym Mod4+l exec dm-tool lock
+bar {
+  position top
+  colors {
+    background #2F1B49
+    statusline #FFFFFF
+    separator  #483066
 
-# Launch polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-# Startup notification daemon
-exec_always --no-startup-id dunst &
-
-# Start default apps on each workspace
-# Wait until mpd has started to update playlist and setup beets
-exec --no-startup-id zsh -c "until [ -f ~/.mpd/pid ]; do; sleep 1; done; mpc clear && mpc load all && mpc shuffle " &
-exec_always --no-startup-id [ ! -s ~/.mpd/pid ] && zsh -c "until [ -f ~/.mpd/pid ]; do; sleep 1; done; beet mpdstats" &
-## Music player daemon
-exec_always --no-startup-id [ ! -s ~/.mpd/pid ] && mpd --no-daemon &
-## Nextcloud Client
-exec --no-startup-id nextcloud &
-## Firefox
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox &' &
-## Discord
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
-assign [class="discord"] $ws3
-## Steam
-exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf &' &
-assign [class="Steam"] $ws4
-## Ncmpcpp Music player
-exec --no-startup-id urxvt -name ncmpcpp -e ncmpcpp &
-for_window [instance="ncmpcpp"] floating enable
-for_window [instance="ncmpcpp"] move scratchpad
-## Move workspaces
-exec --no-startup-id i3-msg move workspave $ws2 to output DVI-D-0 &
-## Go to ws 1 to start
-exec --no-startup-id i3-msg workspace $ws1 &
-
-## Setup timeouts
-exec --no-startup-id xset dpms 0 0 300 &
-
-## Remove attentions
-exec --no-startup-id sh -c 'sleep 7 && wmctrl -l | cut -d " " -f 1 | xargs -I{} wmctrl -i -r "{}" -b remove,demands_attention' &
-bindsym $mod+Shift+r exec /home/froppy/.config/i3/genconfig-local.sh && i3-msg restart
+    focused_workspace  #723699 #502977 #FFFFFF
+    active_workspace   #333333 #222222 #FFFFFF
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #2F343A #900000 #FFFFFF
+    binding_mode       #2F343A #900000 #FFFFFF
+  }
+  status_command i3status
+}
+set $mod Mod1
+bindsym $mod+Shift+r exec /home/froppy/.config/i3/genconfig-vnc1.sh && i3-msg restart

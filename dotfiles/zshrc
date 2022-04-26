@@ -111,6 +111,9 @@ source $ZSH/oh-my-zsh.sh
 # The -F appends a / for directories
 alias ls='ls --color=auto -F'
 alias dotdrop='~/dotfiles/dotdrop.sh --cfg=~/dotfiles/config.yaml'
+alias cp='cp -i --preserve=timestamps' # keep the fucking modified times right :(
+alias mv='mv -i' #stop overwrites
+
 export EDITOR="vim"
 export TERMINAL="urxvt"
 export PATH="/usr/local/MATLAB/R2020b/bin:$HOME/bin:$PATH"
@@ -129,8 +132,10 @@ bindkey -M viins 'jj' vi-cmd-mode
 # python paths
 PATH="/home/froppy/.local/bin:$PATH"
 # Perl paths
-PATH="/home/froppy/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/froppy/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/froppy/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/froppy/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/froppy/perl5"; export PERL_MM_OPT;
+#PATH="/home/froppy/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/home/froppy/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/home/froppy/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/home/froppy/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/froppy/perl5"; export PERL_MM_OPT;
+
+TERM=kitty

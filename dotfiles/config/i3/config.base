@@ -15,13 +15,6 @@ font pango:Droid Sans Mono 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool lock &
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec_always --no-startup-id nm-applet &
-
-# Bluetooth manager
-exec_always --no-startup-id blueman-applet &
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -172,13 +165,13 @@ for_window [class=".*"] border pixel 1
 #new_window 1pixel
 
 # Gaps
-#smart_borders on
+smart_borders on
 #smart_borders no_gaps
 #smart_gaps on
 #gaps inner 20
 
 # Rounded Corners
-#border_radius 5
+#border_radius 15
 
 # Transparency
 #exec_always --no-startup-id "picom --config=$HOME/.config/picom.conf &" 
@@ -192,6 +185,11 @@ bindsym $mod+minus scratchpad show
 
 # Multi monitor commands
 bindsym $mod+p move workspace to output right
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+l move workspace to output right
+
 
 # Show the sup-mail scratchpad window, if any.
 #bindsym Mod4+s [title="^Sup ::"] scratchpad show

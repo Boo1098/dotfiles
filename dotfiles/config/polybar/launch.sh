@@ -11,7 +11,8 @@ echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
 #	MONITOR=$m polybar --reload top &
 #done
 #polybar top 2>&1 | tee -a /tmp/polybar1.log & disown
-MONITOR="HDMI-0" polybar toptray 2>&1 | tee -a /tmp/polybar1.log & disown
-MONITOR="DVI-D-0" polybar topnotray 2>&1 | tee -a /tmp/polybar2.log & disown
+#MONITOR="HDMI-0" polybar toptray 2>&1 | tee -a /tmp/polybar1.log & disown
+MONITOR="DVI-D-0" polybar toptray 2>&1 | tee -a /tmp/polybar1.log & disown
+MONITOR="DP-0" polybar topnotray 2>&1 | tee -a /tmp/polybar2.log & disown
 
 echo "Bars launched..."

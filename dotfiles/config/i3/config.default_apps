@@ -15,7 +15,7 @@ exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox &' &
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/discord &' &
 assign [class="discord"] $ws3
 ## Steam
-exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf &' &
+#exec --no-startup-id i3-msg 'workspace 4; exec /bin/dampf -silent &' &
 assign [class="Steam"] $ws4
 ## Ncmpcpp Music player
 exec --no-startup-id urxvt -name ncmpcpp -e ncmpcpp &
