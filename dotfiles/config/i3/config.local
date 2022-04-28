@@ -1,3 +1,0 @@
-# Lock shortcut
-bindsym Mod4+l exec dm-tool lock
-

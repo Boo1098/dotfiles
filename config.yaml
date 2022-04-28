@@ -6,9 +6,6 @@ dotfiles:
   f_vimrc:
     src: vimrc
     dst: ~/.vimrc
-  f_xprofile:
-    src: xprofile
-    dst: ~/.xprofile
   f_bashrc:
     src: bashrc
     dst: ~/.bashrc
@@ -21,9 +18,6 @@ dotfiles:
   d_dunst:
     src: config/dunst
     dst: ~/.config/dunst
-  d_polybar:
-    src: config/polybar
-    dst: ~/.config/polybar
   d_neofetch:
     src: config/neofetch
     dst: ~/.config/neofetch
@@ -33,44 +27,22 @@ dotfiles:
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
-  f_rc:
-    src: config/cmus/rc
-    dst: ~/.config/cmus/rc
+    chmod: '755'
   d_chrome:
-    src: mozilla/firefox/isxof19t.default-release/chrome
-    dst: ~/.mozilla/firefox/isxof19t.default-release/chrome
+    src: mozilla/firefox/godqu7jf.default-release/chrome
+    dst: ~/.mozilla/firefox/godqu7jf.default-release/chrome
   d_ftplugin:
     src: vim/ftplugin
     dst: ~/.vim/ftplugin
-  d_after:
-    src: vim/after
-    dst: ~/.vim/after
-  f_zshrc:
-    src: zshrc
-    dst: ~/.zshrc
-  f_p10k.zsh:
-    src: p10k.zsh
-    dst: ~/.p10k.zsh
-  f_config:
-    src: vnc/config
-    dst: ~/.vnc/config
 profiles:
   Nova:
     dotfiles:
     - f_vimrc
-    - f_xprofile
     - f_bashrc
     - f_bash_profile
     - d_i3
     - d_dunst
-    - d_polybar
     - d_neofetch
     - f_picom.conf
     - f_xresources
-    - f_rc
     - d_chrome
-    - d_ftplugin
-    - d_after
-    - f_zshrc
-    - f_p10k.zsh
-    - f_config
