@@ -8,23 +8,21 @@ Aborting."; exit 1; }
 command -v wget >/dev/null 2>&1 || { echo >&2 "Program 'wget' required but is not installed.  
 Aborting."; exit 1; }
 
-APIKEY="get your key first"
-#ZIPCODE="1234"
-#CITY_ID="Get your City ID first"
-#URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&units=metric&APPID=${APIKEY}"
-LAT="Find out your position with your latitude"
-LON="and longitude"
-URL="http://api.openweathermap.org/data/2.5/onecall?lat=${LAT}&lon=${LON}&units=metric&exclude=minutely,hourly,daily&APPID=${APIKEY}"
+source ~/.config/secrets/weather
+URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&units=imperial&APPID=${APIKEY}"
+#LAT="Find out your position with your latitude"
+#LON="and longitude"
+#URL="http://api.openweathermap.org/data/2.5/onecall?lat=${LAT}&lon=${LON}&units=metric&exclude=minutely,hourly,daily&APPID=${APIKEY}"
 WEATHER_RESPONSE=$(wget -qO- "${URL}")
 
-WEATHER_CONDITION=$(echo "$WEATHER_RESPONSE" | jq '.current.weather[0].main' | sed 's/"//g')
-WEATHER_TEMP=$(echo "$WEATHER_RESPONSE" | jq '.current.feels_like')
-WEATHER_INT=${WEATHER_TEMP%.*}
+WEATHER_CONDITION=$(echo "$WEATHER_RESPONSE" | jq '.weather[0].main' | sed 's/"//g')
+WEATHER_TEMP=$(echo "$WEATHER_RESPONSE" | jq '.main.feels_like')
+WEATHER_INT=$(((${WEATHER_TEMP%.*}-32) * (10**3 * 5 / 9)/1000))
 
-TIME_NOW=$( echo "$WEATHER_RESPONSE" | jq '.current.dt')
-SUNRISE=$( echo "$WEATHER_RESPONSE" | jq '.current.sunrise')
-SUNSET=$( echo "$WEATHER_RESPONSE" | jq '.current.sunset')
-DESCRIPTION=$( echo "$WEATHER_RESPONSE" | jq '.current.weather[0].description' | sed 's/"//g')
+TIME_NOW=$( echo "$WEATHER_RESPONSE" | jq '.dt')
+SUNRISE=$( echo "$WEATHER_RESPONSE" | jq '.sunrise')
+SUNSET=$( echo "$WEATHER_RESPONSE" | jq '.sunset')
+DESCRIPTION=$( echo "$WEATHER_RESPONSE" | jq '.weather[0].description' | sed 's/"//g')
 WEATHER_ALERT=$( echo "$WEATHER_RESPONSE" | jq '.alerts[0].event' | sed 's/"//g')
 DAYTIME="n"
 
@@ -74,17 +72,17 @@ if [ "$WEATHER_INT" -lt "-11" ]; then
 elif [ "$WEATHER_INT" -gt 35 ]; then
     WEATHER_COLOR="#FF0000"
 else
-    WEATHER_INT=$(( WEATHER_INT + 11 )) 
+    WEATHER_INT=$(( WEATHER_INT - 12 )) 
     WEATHER_COLOR="${temps[$WEATHER_INT]}"
 fi
 
-full_text="${WEATHER_ICON}  ${WEATHER_TEMP}°C: ${DESCRIPTION} "
+full_text="${WEATHER_ICON}  ${WEATHER_TEMP}°F: ${DESCRIPTION} "
 if [ "$WEATHER_ALERT" != "null" ]; then
     WARN_START=$(echo "$WEATHER_RESPONSE" | jq '.alerts[0].start')
     WARN_END=$(echo "$WEATHER_RESPONSE" | jq '.alerts[0].end')
     WARN_START=$(date -d @"$WARN_START" +%a_%k:%M)
     WARN_END=$(date -d @"$WARN_END" +%a_%k:%M)
-    full_text="${WEATHER_ICON}  ${WEATHER_TEMP}°C: ${DESCRIPTION}  ${WEATHER_ALERT} from ${WARN_START} to ${WARN_END}  "
+    full_text="${WEATHER_ICON}  ${WEATHER_TEMP}°F: ${DESCRIPTION}  ${WEATHER_ALERT} from ${WARN_START} to ${WARN_END}  "
 fi
 
 
