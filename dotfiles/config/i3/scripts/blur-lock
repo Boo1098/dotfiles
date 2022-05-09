@@ -5,7 +5,7 @@ xset dpms force off
 PICTURE=/tmp/i3lock.png
 SCREENSHOT="scrot -z $PICTURE"
 
-BLUR="5x4"
+BLUR="40x32"
 
 $SCREENSHOT
 convert $PICTURE -blur $BLUR $PICTURE
