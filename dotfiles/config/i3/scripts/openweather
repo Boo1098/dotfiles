@@ -20,8 +20,8 @@ WEATHER_TEMP=$(echo "$WEATHER_RESPONSE" | jq '.main.feels_like')
 WEATHER_INT=$(((${WEATHER_TEMP%.*}-32) * (10**3 * 5 / 9)/1000))
 
 TIME_NOW=$( echo "$WEATHER_RESPONSE" | jq '.dt')
-SUNRISE=$( echo "$WEATHER_RESPONSE" | jq '.sunrise')
-SUNSET=$( echo "$WEATHER_RESPONSE" | jq '.sunset')
+SUNRISE=$( echo "$WEATHER_RESPONSE" | jq '.sys.sunrise')
+SUNSET=$( echo "$WEATHER_RESPONSE" | jq '.sys.sunset')
 DESCRIPTION=$( echo "$WEATHER_RESPONSE" | jq '.weather[0].description' | sed 's/"//g')
 WEATHER_ALERT=$( echo "$WEATHER_RESPONSE" | jq '.alerts[0].event' | sed 's/"//g')
 DAYTIME="n"
@@ -33,19 +33,19 @@ fi
 case $WEATHER_CONDITION in
   'Clouds')
     if [ "$DAYTIME" == "d" ]; then
-        WEATHER_ICON=""
+        WEATHER_ICON="🌥"
     else
-        WEATHER_ICON=""
+        WEATHER_ICON="☁"
     fi
     ;;
   'Rain')
-    WEATHER_ICON=""
+    WEATHER_ICON="🌧"
     ;;
   'Drizzle')
     if [ "$DAYTIME" == "d" ]; then
-        WEATHER_ICON="" 
+        WEATHER_ICON="🌦" 
     else
-        WEATHER_ICON=""
+        WEATHER_ICON="🌧"
     fi
     ;;
   'Thunderstorm')
@@ -72,7 +72,7 @@ if [ "$WEATHER_INT" -lt "-11" ]; then
 elif [ "$WEATHER_INT" -gt 35 ]; then
     WEATHER_COLOR="#FF0000"
 else
-    WEATHER_INT=$(( WEATHER_INT - 12 )) 
+    WEATHER_INT=$(( WEATHER_INT + 11 )) 
     WEATHER_COLOR="${temps[$WEATHER_INT]}"
 fi
 
