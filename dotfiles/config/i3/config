@@ -418,7 +418,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id discord --start-minimized &
 
 # Enable numlock
-exec --no-starup-id numlockx &
+exec --no-startup-id numlockx &
 
 ###############
 # system tray #
