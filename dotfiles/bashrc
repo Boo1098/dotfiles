@@ -90,3 +90,4 @@ alias dotdrop='~/dotfiles/dotdrop/dotdrop.sh --cfg=~/dotfiles/config.yaml'
 ################################################################################
 
 #export QT_DEVICE_PIXEL_RATIO=1
+export EDITOR=vim
