@@ -109,7 +109,7 @@ let mapleader=","
 imap jj <esc>
 
 " Use system clipboard
-set clipboard=unnamedplus
+set clipboard=unnamedplus,unnamed
 
 " Show super undo menu
 nnoremap <leader>u :GundoToggle<CR>
@@ -224,5 +224,6 @@ let g:badwolf_tabline = 3 " Make tab line much lighter than the backgroud
 
 " }}}
 " Autorun for this file {{{
-" vim:foldmethod=marker:foldlevel=0
+" vim: set foldmethod=marker:
+" vim: set foldlevel=0:
 " }}}
