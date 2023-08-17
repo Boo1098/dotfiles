@@ -22,19 +22,18 @@ html, html > *, html > * > *, .browser-toolbar  {
 }
 
 :root {
-  --sidebar-hover-width: 100px;
+  --sidebar-hover-width: 175px;
   --sidebar-visible-width: 300px;
-  --sidebar-dif: 200px;
 }
 
 /* Sidebar TST */
 #sidebar-box {
-  position: relative !important;
+  /*position: relative !important;*/
   overflow-x: hidden !important;
   /*margin-right: calc(var(--sidebar-dif) * -1) !important;*/
-  left: var(--sidebar-hover-width) !important;
-  min-width: var(--sidebar-hover-width) !important;
-  max-width: var(--sidebar-hover-width) !important;
+  /*left: var(--sidebar-hover-width) !important;*/
+  min-width: 0px !important;
+  width: var(--sidebar-hover-width) !important;
   border-right: 1px solid var(--sidebar-border-color);
   z-index: 1;
   /*transition: all 0.2s;*/
@@ -42,10 +41,8 @@ html, html > *, html > * > *, .browser-toolbar  {
 }
 
 #sidebar-box:hover {
-  margin-right: calc(var(--sidebar-dif) * -1) !important;
-  left: var(--sidebar-visible-width) !important;
-  min-width: var(--sidebar-visible-width) !important;
-  max-width: var(--sidebar-visible-width) !important;
+  margin-right: calc(var(--sidebar-hover-width) - var(--sidebar-visible-width)) !important;
+  width: var(--sidebar-visible-width) !important;
   opacity:.9 !important;
 }
 
@@ -57,6 +54,7 @@ html, html > *, html > * > *, .browser-toolbar  {
 #sidebar-box:hover #sidebar {
   opacity: 1 !important;
 }
+
 
 /* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
 #sidebar-header {
